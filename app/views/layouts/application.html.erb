@@ -10,6 +10,19 @@
   </head>
 
   <body>
+    <head>
+      <h1>LoL Champs</h1>
+      <nav>
+        <% if @current_user %>
+
+        <% else %>
+          <a href="/login">Login</a>
+          <a href="/register">Register</a>
+        <% end %>
+      </nav>
+    </head>
     <%= yield %>
+    <footer>
+    </footer>
   </body>
 </html>
