@@ -11,6 +11,8 @@ capybara-*.html
 *.orig
 rerun.txt
 pickle-email-*.html
+.DS_Store
+Gemfile.lock
 
 # TODO Comment out this rule if you are OK with secrets being uploaded to the repo
 config/initializers/secret_token.rb
@@ -47,3 +49,6 @@ bower.json
 # Ignore node_modules
 node_modules/
 
+
+# Ignore master key for decrypting credentials and more.
+/config/master.key
