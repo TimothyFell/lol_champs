@@ -13,8 +13,9 @@
     <header>
       <h1>LoL Champs</h1>
       <nav>
-        <% if @current_user %>
-
+        <% if current_user %>
+          <a href="/favorites">My Favorites</a>
+          <a href="/logout">Logout</a>
         <% else %>
           <a href="/login">Login</a>
           <a href="/register">Register</a>
