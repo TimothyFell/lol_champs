@@ -1,6 +1,6 @@
 class ChampionFacade
 
-  def initialize(params)
+  def initialize(params= nil)
     @params = params
     @stat_names = {
       "attack": "Attack",
@@ -32,6 +32,13 @@ class ChampionFacade
       Champion.where(["name LIKE ?", "%#{@params["champion"].downcase}%"]).order(:name)
     else
       Champion.all.order(:name)
+    end
+  end
+
+  def favorites(user)
+    favorites = Favorite.where(user_id: user.id)
+    fav_champs = favorites.map do |fave|
+      Champion.find(fave.champion_id)
     end
   end
 
