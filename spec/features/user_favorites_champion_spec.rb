@@ -1,11 +1,11 @@
 require 'rails_helper'
 
-describe 'Visitor tries to favorite champion' do
+describe 'User Favorites a Champion' do
 
   before(:each) do
     file = File.open('./db/champ_data.json').read
     champ = JSON.parse(file)[0]
-    Champion.create({
+    @champion = Champion.create({
       attack: champ["Attack"],
       defense: champ["Defense"],
       magic: champ["Magic"],
@@ -31,38 +31,21 @@ describe 'Visitor tries to favorite champion' do
       name: champ["Name"].downcase,
       title: champ["Title"].downcase
     })
+    @user = User.create(name: "Bob", email: 'bob@bob.com', password: '0987654321', password_confirmation: '0987654321')
+    visit '/login'
+    fill_in 'Email', with: @user.email
+    fill_in 'Password', with: @user.password
+    click_on('Log in')
   end
 
-  describe "they should see the champion show page" do
+  it "They are taken to their favorites page" do
+    visit "/champions/#{@champion.name}"
 
-    it "with a favorite link" do
-      visit '/'
+    expect(page).to have_content("#{@champion.name.titleize}")
 
-      click_on("Annie, The Dark Child")
+    click_on("Favorite")
 
-      expect(current_path).to eq(champion_path("annie"))
-
-      expect(page).to have_link("Favorite")
-    end
-
-  end
-
-  describe "when they click on it" do
-
-    before(:each) do
-      visit champion_path("annie")
-
-      click_link("Favorite")
-    end
-
-    it "they should be redirected to the login page" do
-      expect(current_path).to eq(login_path)
-    end
-
-    it "and they should see a flash message" do
-      expect(page).to have_content("You need to login or register to favorite champions")
-    end
-
+    expect(current_path).to eq(my_favorites_path)
   end
 
 end
