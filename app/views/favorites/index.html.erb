@@ -1,8 +1,55 @@
 <section class="champions">
+  <h2><%= current_user.name %>'s Favorites</h2>
   <% @champion_facade.favorites(current_user).each do |champ| %>
     <div class="champ">
       <h3><a href="/champions/<%= champ.name %>"><%= champ.name.titleize %>, <%= champ.title.titleize %></a></h3>
-      <p><a href="/my_favorites/<%= champ.id %>" data_method="delete">Unfollow</a></p>
+      <p><a href="/my_favorites/<%= champ.id %>" data_method="delete">Unfavorite</a></p>
+      <table class="stats">
+        <tbody>
+          <tr>
+            <td><h4>General Stats</h4></td>
+            <td></td>
+            <td><h4>Starting Stats</h4></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Attack:</td>
+            <td><%= champ.attack %></td>
+            <td>Attack Damage:</td>
+            <td><%= champ.attackDamage %></td>
+          </tr>
+          <tr>
+            <td>Defense:</td>
+            <td><%= champ.defense %></td>
+            <td>Health Points:</td>
+            <td><%= champ.hp %></td>
+          </tr>
+          <tr>
+            <td>Magic:</td>
+            <td><%= champ.magic %></td>
+            <td>Mana Points:</td>
+            <td><%= champ.mp %></td>
+          </tr>
+          <tr>
+            <td>Difficulty: </td>
+            <td><%= champ.difficulty %></td>
+            <td>Armor: </td>
+            <td><%= champ.armor %></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td>Spell Block: </td>
+            <td><%= champ.spellBlock %></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td>Move Speed: </td>
+            <td><%= champ.moveSpeed %></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   <% end %>
 </section>
