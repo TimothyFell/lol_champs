@@ -10,7 +10,7 @@
   </head>
 
   <body>
-    <head>
+    <header>
       <h1>LoL Champs</h1>
       <nav>
         <% if @current_user %>
@@ -20,7 +20,12 @@
           <a href="/register">Register</a>
         <% end %>
       </nav>
-    </head>
+    </header>
+    <div class="flash">
+      <% flash.each do |name, msg| %>
+          <%= content_tag :div, msg, class: name %>
+        <% end %>
+    </div>
     <%= yield %>
     <footer>
     </footer>
