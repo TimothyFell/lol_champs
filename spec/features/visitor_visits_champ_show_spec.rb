@@ -37,12 +37,48 @@ describe 'Visitor visits /champ_name' do
 
   describe "they should see a landing area" do
 
-    it "with 'Welcome to LOL Champs'" do
+    it "with the champions name and title" do
       visit '/'
 
       click_on("Annie, The Dark Child")
 
       expect(current_path).to eq(champion_path("annie"))
+      within('.landing') do
+        expect(page).to have_content('Annie, The Dark Child')
+      end
+    end
+
+  end
+
+  describe "And a section " do
+
+    it "containg all of the champions stats" do
+      visit champion_path('annie')
+
+      within('.data') do
+        expect(page).to have_content("Attack")
+        expect(page).to have_content("Defense")
+        expect(page).to have_content("Magic")
+        expect(page).to have_content("Difficulty")
+        expect(page).to have_content("HP")
+        expect(page).to have_content("+ HP/Level")
+        expect(page).to have_content("MP")
+        expect(page).to have_content("+ MP/Level")
+        expect(page).to have_content("Move Speed")
+        expect(page).to have_content("Armor")
+        expect(page).to have_content("+ Armor/Level")
+        expect(page).to have_content("Spell Block")
+        expect(page).to have_content("+ Spell Block/Level")
+        expect(page).to have_content("Attack Range")
+        expect(page).to have_content("HP Regen")
+        expect(page).to have_content("+ HP Regen/Level")
+        expect(page).to have_content("MP Regen")
+        expect(page).to have_content("+MP Regen/Level")
+        expect(page).to have_content("Attack Damage")
+        expect(page).to have_content("+ Attack Damage/Level")
+        expect(page).to have_content("Attack Speed Offset")
+      end
+
     end
 
   end
