@@ -1,0 +1,8 @@
+<section class="champions">
+  <% @champion_facade.favorites(current_user).each do |champ| %>
+    <div class="champ">
+      <h3><a href="/champions/<%= champ.name %>"><%= champ.name.titleize %>, <%= champ.title.titleize %></a></h3>
+      <p><a href="/my_favorites/<%= champ.id %>" data_method="delete">Unfollow</a></p>
+    </div>
+  <% end %>
+</section>

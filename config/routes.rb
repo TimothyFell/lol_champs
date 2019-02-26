@@ -9,4 +9,5 @@ Rails.application.routes.draw do
 
   get '/champions/:name', to: 'champions#show', as: 'champion'
   post '/favorites/:name', to: 'favorites#create', as: 'favorites'
+  get '/my_favorites', to: 'favorites#index', as:'my_favorites'
 end
