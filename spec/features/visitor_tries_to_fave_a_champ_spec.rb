@@ -49,12 +49,18 @@ describe 'Visitor visits /champ_name' do
 
   describe "when they click on it" do
 
-    it "they should be redirected to the login page" do
+    before(:each) do
       visit champion_path("annie")
 
       click_link("Favorite")
+    end
 
+    it "they should be redirected to the login page" do
       expect(current_path).to eq(login_path)
+    end
+
+    it "and they should see a flash message" do
+      expect(page).to have_content("You need to login or register to favorite champions")
     end
 
   end
