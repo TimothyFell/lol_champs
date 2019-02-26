@@ -4,7 +4,7 @@ class ChampionsController < ApplicationController
   end
 
   def show
-
+    @champion_facade = ChampionFacade.new(champ_params(params))
   end
 
   def create
@@ -17,6 +17,6 @@ class ChampionsController < ApplicationController
 
   private
     def champ_params(params)
-      params.permit(:champion)
+      params.permit(:champion, :name)
     end
 end
