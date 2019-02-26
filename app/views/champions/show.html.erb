@@ -1,0 +1,20 @@
+<section class="landing">
+  <div class="container">
+  <h2><%= @champion_facade.current_champ.name.titleize %>, <%= @champion_facade.current_champ.title.titleize %></h2>
+  <p><a href="/favorites/<%= @champion_facade.current_champ.name %>">Favorite</a></p>
+</div>
+</section>
+<section class="data">
+  <div class="container">
+    <table>
+      <tbody>
+        <% @champion_facade.current_champ_stats.each do |stat, val| %>
+        <tr>
+          <td class="stat"><%= stat %>:</td>
+          <td class="val"><%= val %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</section>
