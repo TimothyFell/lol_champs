@@ -48,4 +48,20 @@ describe 'User Favorites a Champion' do
     expect(current_path).to eq(my_favorites_path)
   end
 
+  describe "Sad Paths" do
+    it "They try to favorite a champion they already did" do
+      visit "/champions/#{@champion.name}"
+
+      click_on("Favorite")
+
+      visit "/champions/#{@champion.name}"
+
+      click_on("Favorite")
+
+      expect(current_path).to eq(my_favorites_path)
+      expect(page).to have_content("You've already favorited that champion, silly!")
+      expect(page).to have_css('.champ', count:1)
+    end
+  end
+
 end
