@@ -11,14 +11,14 @@
 
   <body>
     <header>
-      <h1>LoL Champs</h1>
+      <h1><a href="<%= root_path %>">LoL Champs</a></h1>
       <nav>
         <% if current_user %>
-          <a href="/favorites">My Favorites</a>
-          <a href="/logout">Logout</a>
+          <%= link_to "My Favorites", my_favorites_path %>
+          <%= link_to "Logout" %>
         <% else %>
-          <a href="/login">Login</a>
-          <a href="/register">Register</a>
+          <%= link_to "Login", login_path %>
+          <%= link_to "Register", register_path %>
         <% end %>
       </nav>
     </header>
