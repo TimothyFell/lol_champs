@@ -10,8 +10,8 @@
       <tbody>
         <% @champion_facade.current_champ_stats.each do |stat, val| %>
         <tr>
-          <td><%= stat %>:</td>
-          <td><%= val %></td>
+          <td class="stat"><%= stat %>:</td>
+          <td class="val"><%= val %></td>
         </tr>
         <% end %>
       </tbody>
