@@ -4,29 +4,32 @@
     <title>LolChamps</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <link href="https://fonts.googleapis.com/css?family=Nunito|Roboto" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
   </head>
 
   <body>
     <header>
-      <h1><a href="<%= root_path %>">LoL Champs</a></h1>
-      <nav>
-        <% if current_user %>
-          <%= link_to "My Favorites", my_favorites_path %>
-          <%= link_to "Logout", logout_path %>
-        <% else %>
-          <%= link_to "Login", login_path %>
-          <%= link_to "Register", register_path %>
-        <% end %>
-      </nav>
-    </header>
-    <div class="flash">
-      <% flash.each do |name, msg| %>
+      <div class="container">
+        <h1><a href="<%= root_path %>">LoL Champs</a></h1>
+        <nav>
+          <%= link_to "All Champions", root_path %>
+          <% if current_user %>
+            <%= link_to "My Favorites", my_favorites_path %>
+            <%= link_to "Logout", logout_path %>
+          <% else %>
+            <%= link_to "Login", login_path %>
+            <%= link_to "Register", register_path %>
+          <% end %>
+        </nav>
+      </div>
+      <div class="flash">
+        <% flash.each do |name, msg| %>
           <%= content_tag :div, msg, class: name %>
         <% end %>
-    </div>
+      </div>
+    </header>
     <%= yield %>
     <footer>
     </footer>

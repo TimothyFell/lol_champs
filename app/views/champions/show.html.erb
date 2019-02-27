@@ -1,26 +1,23 @@
-<section class="landing">
+<section class="splash">
   <div class="container">
-  <h2><%= @champion_facade.current_champ.name.titleize %>, <%= @champion_facade.current_champ.title.titleize %></h2>
-  <p>
-    <% if @champion_facade.current_champ.favorite?(current_user) %>
-      <a href="/favorites/<%= @champion_facade.current_champ.name %>" data-method="post">Favorite</a>
-    <% else %>
-      <a href="/favorites/<%= @champion_facade.current_champ.name %>" data-method="delete">Unfavorite</a>
-    <% end %>
-  </p>
-</div>
-</section>
-<section class="data">
-  <div class="container">
-    <table>
-      <tbody>
-        <% @champion_facade.current_champ_stats.each do |stat, val| %>
-        <tr>
-          <td class="stat"><%= stat %>:</td>
-          <td class="val"><%= val %></td>
-        </tr>
+    <div class="name-col">
+      <h2><%= @champion_facade.current_champ.name.titleize %>, <%= @champion_facade.current_champ.title.titleize %></h2>
+      <p>
+        <% if @champion_facade.current_champ.favorite?(current_user) %>
+          <a href="/favorites/<%= @champion_facade.current_champ.name %>" data-method="post">Favorite</a>
+        <% else %>
+          <a href="/favorites/<%= @champion_facade.current_champ.name %>" data-method="delete">Unfavorite</a>
         <% end %>
-      </tbody>
-    </table>
+      </p>
+    </div>
+    <div class="stats">
+      <h3><%= @champion_facade.current_champ.name.titleize %>'s Stats</h3>
+        <% @champion_facade.current_champ_stats.each do |stat, val| %>
+        <div class="stat_row">
+          <p class="stat"><%= stat %>:</p>
+          <p class="val"><%= val %></p>
+        </div>
+        <% end %>
+    </div>
   </div>
 </section>

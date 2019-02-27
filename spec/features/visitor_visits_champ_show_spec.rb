@@ -43,7 +43,7 @@ describe 'Visitor visits /champ_name' do
       click_on("Annie, The Dark Child")
 
       expect(current_path).to eq(champion_path("annie"))
-      within('.landing') do
+      within('.splash') do
         expect(page).to have_content('Annie, The Dark Child')
       end
     end
@@ -55,7 +55,7 @@ describe 'Visitor visits /champ_name' do
     it "containg all of the champions stats" do
       visit champion_path('annie')
 
-      within('.data') do
+      within('.stats') do
         expect(page).to have_content("Attack")
         expect(page).to have_content("Defense")
         expect(page).to have_content("Magic")
