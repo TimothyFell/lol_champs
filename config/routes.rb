@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   post '/register', to: 'users#create', as:'users'
 
   get '/champions/:name', to: 'champions#show', as: 'champion'
+
   post '/favorites/:name', to: 'favorites#create', as: 'favorites'
+  delete '/favorites/:name', to: 'favorites#destroy'
+  
   get '/my_favorites', to: 'favorites#index', as:'my_favorites'
 end
