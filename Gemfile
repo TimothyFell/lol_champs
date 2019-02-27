@@ -23,6 +23,7 @@ group :development, :test do
   gem 'shoulda-matchers', '~> 3.1'
   gem 'database_cleaner'
   gem 'simplecov'
+  gem 'simplecov-console'
   gem 'webmock'
   gem 'vcr'
 end

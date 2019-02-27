@@ -3,6 +3,8 @@ require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 
 require 'simplecov'
+require 'simplecov-console'
+SimpleCov.formatter = SimpleCov::Formatter::Console
 SimpleCov.start do
   add_filter 'config/'
   add_filter 'spec/'
