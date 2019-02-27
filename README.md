@@ -6,6 +6,8 @@
 
 This is a small app that allows users to read through the stats of all of the League of Legends Champions. They can also favorite the champions to view them one screen to compare some of the basic stats and keep a running list of favorites. I used the champion data from Fantasy Data API to seed my database at first and on production have a rake task that updates the database every day at midnight.
 
+Production: [Lol Champs](https://quiet-cliffs-36823.herokuapp.com/)
+
 ## Setup
 
 1. Clone down the repo:
