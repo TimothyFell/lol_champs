@@ -1,16 +1,26 @@
 <section class="landing">
-  <h2>Welcome to LOL Champs</h2>
-  <h3>You're one-stop-shop for League of Legends champion data!</h3>
-  <%= form_tag(champions_path, method: :get) do %>
-    <%= label_tag 'Search for a Champion' %>
-    <%= text_field_tag :champion %>
-    <%= submit_tag 'Search' %>
-  <% end %>
-</section>
-<section class="champions">
-  <% @champion_facade.champs.each do |champ| %>
-    <div class="champ">
-      <h3><a href="/champions/<%= champ.name %>"><%= champ.name.titleize %>, <%= champ.title.titleize %></a></h3>
+  <div class="container">
+    <div class="centered-text">
+      <div>
+        <h2>Welcome to LOL Champs</h2>
+        <h3>You're one-stop-shop for League of Legends champion data!</h3>
+        <%= form_tag(champions_path, method: :get) do %>
+          <%= label_tag 'Search for a Champion' %>
+          <p><%= text_field_tag :champion %>
+          <%= submit_tag 'Search' %></p>
+        <% end %>
+      </div>
     </div>
-  <% end %>
+  </div>
+</section>
+<section>
+  <div class="container">
+    <div class="champions">
+      <% @champion_facade.champs.each do |champ| %>
+        <div class="champ">
+          <h3><a href="/champions/<%= champ.name %>"><%= champ.name.titleize %>, <%= champ.title.titleize %></a></h3>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </section>
