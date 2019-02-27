@@ -1,7 +1,13 @@
 <section class="landing">
   <div class="container">
   <h2><%= @champion_facade.current_champ.name.titleize %>, <%= @champion_facade.current_champ.title.titleize %></h2>
-  <p><a href="/favorites/<%= @champion_facade.current_champ.name %>" data-method="post">Favorite</a></p>
+  <p>
+    <% if @champion_facade.current_champ.favorite?(current_user) %>
+      <a href="/favorites/<%= @champion_facade.current_champ.name %>" data-method="post">Favorite</a>
+    <% else %>
+      <a href="/favorites/<%= @champion_facade.current_champ.name %>" data-method="delete">Unfavorite</a>
+    <% end %>
+  </p>
 </div>
 </section>
 <section class="data">

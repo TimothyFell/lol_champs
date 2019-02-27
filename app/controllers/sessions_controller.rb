@@ -16,6 +16,12 @@ class SessionsController < ApplicationController
     end
   end
 
+  def destroy
+    session[:user_id] = nil
+    flash[:info] = 'You are logged out'
+    redirect_to root_path
+  end
+
   private
     def login_params
       params.permit(:email, :password)

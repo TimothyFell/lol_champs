@@ -26,10 +26,16 @@ class FavoritesController < ApplicationController
     end
   end
 
+  def destroy
+    champ = Champion.find_by(name: fav_params["name"])
+    favorite = champ.favorites.find_by(user_id: session[:user_id])
+    Favorite.delete(favorite)
+    flash[:success] = "You've successfuly unfavorited #{champ.name.titleize}"
+    redirect_to(my_favorites_path)
+  end
+
   private
     def fav_params
       params.permit(:name)
     end
-
-
 end

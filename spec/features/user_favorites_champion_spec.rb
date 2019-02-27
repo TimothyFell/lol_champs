@@ -88,20 +88,12 @@ describe 'User Favorites a Champion' do
     end
   end
 
-  describe "Sad Paths" do
-    it "They try to favorite a champion they already did" do
-      visit "/champions/#{@champions[0].name}"
+  it 'On the champions show page the favorite button should be an unfavorite button' do
+    visit "/champions/#{@champions[0].name}"
+    click_on("Favorite")
+    visit "/champions/#{@champions[0].name}"
 
-      click_on("Favorite")
-
-      visit "/champions/#{@champions[0].name}"
-
-      click_on("Favorite")
-
-      expect(current_path).to eq(my_favorites_path)
-      expect(page).to have_content("You've already favorited that champion, silly!")
-      expect(page).to have_css('.champ', count:1)
-    end
+    expect(page).to have_link("Unfavorite")
   end
 
 end
